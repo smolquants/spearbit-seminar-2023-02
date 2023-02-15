@@ -6,8 +6,10 @@ import {IWETH9} from "./interfaces/IWETH9.sol";
 
 /// @dev DO NOT ACTUALLY DEPLOY
 contract Option {
-    uint256 public constant MIN_PRICE0 = 100000000000000000000; // in wad for WETH
-    uint256 public constant MIN_PRICE1 = 1500000000000000000000; // in wad for WBTC
+    uint256 public constant PREMIUM = 100000000000000000000; // in wad for WETH
+    uint256 public constant COLLATERAL = 1000000000000000000000; // in wad for WETH
+    uint256 public constant STRIKE_PRICE0 = 100000000000000000000; // in wad for WETH
+    uint256 public constant STRIKE_PRICE1 = 1500000000000000000000; // in wad for WBTC
 
     IWETH9 public immutable WETH9;
     address public immutable buyer;
@@ -29,15 +31,10 @@ contract Option {
     function initialize() external {
         require(!initialized, "initialized already");
         
-        uint256 premiumAmount = WETH9.allowance(buyer, address(this));
-        uint256 collateralAmount = WETH9.allowance(seller, address(this));
-        require(premiumAmount < type(uint256).max, "allowance too large for buyer");
-        require(collateralAmount < type(uint256).max, "allowance too large for seller");
-
-        bool success = WETH9.transferFrom(buyer, address(this), premiumAmount);
+        bool success = WETH9.transferFrom(buyer, address(this), PREMIUM);
         require(success, "transfer from buyer failed");
         
-        success = WETH9.transferFrom(seller, address(this), collateralAmount);
+        success = WETH9.transferFrom(seller, address(this), COLLATERAL);
         require(success, "transfer from seller failed");
 
         initialized = true;
@@ -54,7 +51,7 @@ contract Option {
 
         uint256 price0 = getPrice(0);
         uint256 price1 = getPrice(1);
-        require(price0 < MIN_PRICE0 && price1 < MIN_PRICE1, "prices not below strikes");
+        require(price0 < STRIKE_PRICE0 && price1 < STRIKE_PRICE1, "prices not below strikes");
 
         triggered = true;
     }
