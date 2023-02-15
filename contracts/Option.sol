@@ -30,12 +30,12 @@ contract Option {
     
     function initialize() external {
         require(!initialized, "initialized already");
+                
+        bool success = WETH9.transferFrom(seller, address(this), COLLATERAL);
+        require(success, "transfer collateral from seller failed");
         
-        bool success = WETH9.transferFrom(buyer, address(this), PREMIUM);
-        require(success, "transfer from buyer failed");
-        
-        success = WETH9.transferFrom(seller, address(this), COLLATERAL);
-        require(success, "transfer from seller failed");
+        success = WETH9.transferFrom(buyer, seller, PREMIUM);
+        require(success, "transfer premium from buyer to seller failed");
 
         initialized = true;
     }
