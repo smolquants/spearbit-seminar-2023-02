@@ -5,7 +5,7 @@ pragma solidity 0.8.17;
 contract Oracle {
     uint256[2] public prices;
     
-    function setPrice(uint256 i, uint256 _price) public {
+    function setPrice(uint256 i, uint256 _price) external {
         prices[i] = _price;
     }
 }

@@ -15,6 +15,12 @@ export WEB3_ALCHEMY_PROJECT_ID=MY_ALCHEMY_PROJECT_ID
 export ETHERSCAN_API_KEY=MY_ETHERSCAN_API_KEY
 ```
 
+## Compile
+
+```sh
+(spearbit-seminar-2023-02) $ ape compile --size
+```
+
 ## Run
 
 ```sh
