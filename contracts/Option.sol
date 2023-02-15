@@ -6,10 +6,12 @@ import {IWETH9} from "./interfaces/IWETH9.sol";
 
 /// @dev DO NOT ACTUALLY DEPLOY
 contract Option {
+    // Q: Is this a fair price for the option?
     uint256 public constant PREMIUM = 100000000000000000000; // in wad for WETH
     uint256 public constant COLLATERAL = 1000000000000000000000; // in wad for WETH
-    uint256 public constant STRIKE_PRICE0 = 100000000000000000000; // in wad for WETH
-    uint256 public constant STRIKE_PRICE1 = 1500000000000000000000; // in wad for WBTC
+
+    uint256 public constant STRIKE_PRICE0 = 1000000000000000000000; // in wad for WETH
+    uint256 public constant STRIKE_PRICE1 = 15000000000000000000000; // in wad for WBTC
 
     IWETH9 public immutable WETH9;
     address public immutable buyer;
