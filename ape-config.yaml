@@ -1,0 +1,28 @@
+name: spearbit-seminar-2023-02
+
+plugins:
+  - name: alchemy
+    version: 0.5.4
+  - name: solidity
+    version: 0.5.4
+  - name: foundry
+    version: 0.5.2
+  - name: notebook
+    version: 0.5.0-alpha.2
+  - name: etherscan
+    version: 0.5.5
+  - name: risk
+    version: 0.1.0-alpha.2
+
+default_ecosystem: ethereum
+
+ethereum:
+  default_network: mainnet-fork
+  mainnet_fork:
+    default_provider: foundry
+
+foundry:
+  fork:
+    ethereum:
+      mainnet:
+        upstream_provider: alchemy
