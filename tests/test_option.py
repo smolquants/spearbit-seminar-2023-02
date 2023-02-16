@@ -20,5 +20,5 @@ def hist_data():
     shift=[0, 0],
     hist_data=hist_data(),
 ))
-def test_option_triggers(simulated_prices):
+def test_triggers_with_multi_gbms(simulated_prices):
     print("simulated_prices:", simulated_prices)
