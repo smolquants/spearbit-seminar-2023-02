@@ -26,3 +26,10 @@ export ETHERSCAN_API_KEY=MY_ETHERSCAN_API_KEY
 ```sh
 (spearbit-seminar-2023-02) $ ape notebook
 ```
+
+## Test
+
+```sh
+(spearbit-seminar-2023-02) $ ape test -s
+```
+
