@@ -58,7 +58,7 @@ contract Option {
         triggered = true;
     }
     
-    /// allows claim of funds from insurance fund
+    /// allows claim of funds
     function claim() external {
         require(initialized, "not initialized");
         require(block.timestamp >= expiry, "time not past expiry");
